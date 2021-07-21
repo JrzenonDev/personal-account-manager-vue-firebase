@@ -12,6 +12,11 @@ export default {
   name: 'App',
   components: {
     BaseSpinner
+  },
+  methods: {
+    mostrarSpinner () {
+      this.$root.$emit('Spinner::show')
+    }
   }
 }
 </script>

@@ -12,8 +12,13 @@ export default {
     }
   },
   created () {
-    this.$root.$on('Spinner::show', () => { this.visible = true })
-    this.$root.$on('Spinner::hide', () => { this.visible = false })
+    this.$root.$on('Spinner::show', this.alterarSpinner)
+    this.$root.$on('Spinner::hide', this.alterarSpinner)
+  },
+  methods: {
+    alterarSpinner () {
+      this.visible = !this.visible
+    }
   }
 }
 </script>
