@@ -1,20 +1,28 @@
 <template>
   <div id="app">
-    <base-spinner />
-    <button>Mostrar Spinner</button>
-    <!-- <router-view/> -->
+    <base-spinner/>
+    <button @click="mostrarSpinner()">Mostrar Spinner</button>
   </div>
 </template>
 
-<script lang="ts">
-import BaseSpinner from './components/global/BaseSpinner.vue'
+<script>
+import BaseSpinner from './components/global/BaseSpinner'
 
 export default {
+  name: 'App',
   components: {
     BaseSpinner
   }
 }
 </script>
 
-<style lang="scss">
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
 </style>

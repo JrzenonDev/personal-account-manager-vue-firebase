@@ -1,4 +1,4 @@
-# expanse
+# expenses
 
 ## Project setup
 ```
