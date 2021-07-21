@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <BaseSpinner />
+    <base-spinner />
+    <button>Mostrar Spinner</button>
     <!-- <router-view/> -->
   </div>
 </template>

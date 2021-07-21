@@ -6,7 +6,21 @@
 
 <script>
 export default {
-  name: 'base-spinner'
+  name: 'base-spinner',
+  data () {
+    return {
+      visible: false
+    }
+  },
+  created () {
+    this.$route.$on('Spinner::show', () => {
+      this.visible = true
+    })
+
+    this.$route.$on('Spinner::hide', () => {
+      this.visible = false
+    })
+  }
 }
 </script>
 
