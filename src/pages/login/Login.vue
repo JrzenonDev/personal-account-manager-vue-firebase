@@ -33,8 +33,12 @@ export default {
     align-items: center;
     height: 100vh;
 
+    h1 {
+      font-size: 18pt;
+    }
+
     .card {
-      width: 25%;
+      width: 30%;
       color: var(--darker);
     }
   }
