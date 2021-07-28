@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <base-spinner/>
-    <button @click="mostrarSpinner()">Mostrar Spinner</button>
+    <router-link to="/">Home</router-link>
+    <router-link to="/about">About</router-link>
+    <router-view/>
   </div>
 </template>
 
@@ -12,11 +14,6 @@ export default {
   name: 'App',
   components: {
     BaseSpinner
-  },
-  methods: {
-    mostrarSpinner () {
-      this.$root.$emit('Spinner::show')
-    }
   },
   mounted () {
     console.log(this.$firebase)
