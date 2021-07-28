@@ -1,18 +1,30 @@
 <template>
-  <form class="form-login">
+  <form @submit.prevent="doLogin()" class="form-login">
     <div class="card">
       <div class="card-header text-center">
         <h1>Expanses</h1>
       </div>
       <div class="card-body">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="E-mail">
+          <input
+            required
+            v-model="email"
+            type="text"
+            class="form-control"
+            placeholder="E-mail"
+          >
         </div>
         <div class="form-group">
-          <input type="password" class="form-control" placeholder="Senha">
+          <input
+            required
+            v-model="password"
+            type="password"
+            class="form-control"
+            placeholder="Senha"
+          >
         </div>
         <button class="btn btn-primary w-100">
-          Enviar
+          Entrar
         </button>
       </div>
     </div>
@@ -22,7 +34,24 @@
 <script>
 
 export default {
-  name: 'Login'
+  name: 'Login',
+  data () {
+    return {
+      email: '',
+      password: ''
+    }
+  },
+  methods: {
+    async doLogin () {
+      const { email, password } = this
+      try {
+        const res = await this.$firebase.auth().signInWithEmailAndPassword(email, password)
+        console.log(res)
+      } catch (err) {
+        console.log(err)
+      }
+    }
+  }
 }
 </script>
 
