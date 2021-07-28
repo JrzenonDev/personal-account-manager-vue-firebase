@@ -1,13 +1,13 @@
-$dark: #000;
-$darker: #333;
-$darker-low: #666;
-$dark-medium: #444;
-$light-low: #999;
-$light-medium: #ddd;
-$light: #fff;
+$dark: #000 !important;
+$darker: #333 !important;
+$darker-low: #666 !important;
+$dark-medium: #444 !important;
+$light-low: #999 !important;
+$light-medium: #ddd !important;
+$light: #fff !important;
 
-$featured: #ff9900;
-$featured-dark: #d68100;
+$featured: #ff9900 !important;
+$featured-dark: #d68100 !important;
 
 :root {
   --dark: #{$dark};
