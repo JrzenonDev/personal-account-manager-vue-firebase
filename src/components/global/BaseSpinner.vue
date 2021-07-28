@@ -36,7 +36,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #505050;
-  color: #cca900;
+  background-color: var(--darker);
+  color: var(--featured);
 }
 </style>
