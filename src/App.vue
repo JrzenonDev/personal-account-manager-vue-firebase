@@ -16,8 +16,6 @@ export default {
   mounted () {
     this.$firebase.auth().onAuthStateChanged(user => {
       window.uid = user ? user.uid : null
-      console.log(window.uid)
-      console.log(this.$router.currentRoute.name)
       if (window.uid) {
         if (this.$router.currentRoute.name !== 'home') {
           this.$router.push({ name: 'home' })
@@ -25,7 +23,9 @@ export default {
       } else {
         this.$router.push({ name: 'login' })
       }
-      this.$root.$emit('Spinner::hide')
+      setTimeout(() => {
+        this.$root.$emit('Spinner::hide')
+      }, 300)
     })
   }
 }
