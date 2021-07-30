@@ -54,14 +54,25 @@ export default {
       this.loading = true
       const { email, password } = this
       try {
-        const res = await this.$firebase.auth().signInWithEmailAndPassword(email, password)
+        const res = await this.$firebase
+          .auth()
+          .signInWithEmailAndPassword(email, password)
         window.uid = res.user.uid
-        this.$router.push({ name: 'home' })
+        if (this.$router.currentRoute.name !== 'home') {
+          this.$router.push({ name: 'home' })
+        }
       } catch (err) {
         console.log(err)
       }
       this.loading = false
     }
+  },
+  beforeRouteEnter (to, from, next) {
+    next((vm) => {
+      if (window.uid) {
+        vm.$router.push({ name: 'home' })
+      }
+    })
   }
 }
 </script>
