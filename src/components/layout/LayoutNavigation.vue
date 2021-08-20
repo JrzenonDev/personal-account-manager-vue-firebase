@@ -21,3 +21,26 @@ export default {
   name: 'LayoutNavigation'
 }
 </script>
+
+<style lang="scss" scoped>
+  .nav {
+    margin-left: -15px;
+    width: calc(100% + 30px);
+    height: calc(100vh - 49px);
+
+      .nav-link {
+        color: var(--white);
+        transition: .4;
+
+        &.active {
+          color: var(--featured);
+          background-color: transparent;
+        }
+
+        &:hover {
+          color: var(--dark);
+          background-color: var(--featured);
+        }
+      }
+  }
+</style>

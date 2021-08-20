@@ -1,9 +1,10 @@
 <template>
   <div id="app">
-    <base-spinner/>
+    <base-spinner />
     <div class="contaier-fluid" v-if="isLogged">
       <div class="row">
-        <div class="col-lg-3">
+        <div class="col-lg-2 navigation-sidebar">
+          <h1 class="app-title">Expanses</h1>
           <layout-navigation />
         </div>
         <div class="col">
@@ -49,10 +50,21 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 #app {
   min-height: 100vh;
+  max-width: 100vw;
   color: var(--light);
   background-color: var(--darker);
+
+    .navigation-sidebar {
+      background-color: var(--dark-medium);
+
+        .app-title {
+          font-size: 20pt;
+          margin-top: 10px;
+          text-align: center;
+        }
+    }
 }
 </style>
