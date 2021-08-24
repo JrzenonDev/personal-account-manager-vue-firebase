@@ -57,6 +57,10 @@ export default {
   color: var(--light);
   background-color: var(--darker);
 
+    .row {
+      max-width: 100%;
+    }
+
     .navigation-sidebar {
       background-color: var(--dark-medium);
 

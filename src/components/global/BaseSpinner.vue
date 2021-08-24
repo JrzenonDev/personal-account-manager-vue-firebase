@@ -33,5 +33,6 @@ export default {
   justify-content: center;
   background-color: var(--darker);
   color: var(--featured);
+  max-width: 100%;
 }
 </style>

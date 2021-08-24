@@ -1,5 +1,7 @@
 <template>
-  <main></main>
+  <main>
+    Lista gastos
+  </main>
 </template>
 
 <script>
