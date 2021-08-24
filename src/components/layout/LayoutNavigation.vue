@@ -1,30 +1,35 @@
 <template>
   <ul class="nav flex-column">
-    <li class="nav-item">
-      <a class="nav-link active" href="#">Active</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Link</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Link</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link disabled" href="#">Disabled</a>
-    </li>
+    <router-link
+      v-for="(router, i) in routerLink"
+      :key="i"
+      class="nav-link"
+      :to="{name: router.name}"
+      exact
+      exact-active-class="active"
+    >
+      <i :class="`fa-${router.meta.icon}`" />
+      {{ router.meta.title }}
+    </router-link>
   </ul>
 </template>
 
 <script>
 
 export default {
-  name: 'LayoutNavigation'
+  name: 'LayoutNavigation',
+  computed: {
+    routerLink () {
+      return this.$router.options.routes.filter(r => r.name !== 'login')
+    }
+  }
 }
 </script>
 
 <style lang="scss" scoped>
   .nav {
     margin-left: -15px;
+    padding-left: 15px;
     width: calc(100% + 30px);
     height: calc(100vh - 49px);
 
