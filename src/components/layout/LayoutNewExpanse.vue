@@ -86,7 +86,28 @@ export default {
   }),
   methods: {
     submit () {
-      console.log('ok')
+      this.$root.$emit('Spinner::show')
+
+      const ref = this.$firebase.database().ref(window.uid)
+      const id = ref.push().key
+
+      const payload = {
+        id,
+        receipt: '',
+        value: this.form.value,
+        createdAt: new Date().getTime(),
+        description: this.form.description
+      }
+
+      ref.child(id).set(payload, err => {
+        this.$root.$emit('Spinner::hide')
+
+        if (err) {
+          console.error(err)
+        } else {
+          this.closeModal()
+        }
+      })
     },
     closeModal () {
       this.showModal = false
