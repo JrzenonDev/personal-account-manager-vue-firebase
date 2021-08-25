@@ -12,6 +12,8 @@
         <i :class="`fa fa-${router.meta.icon}`" />
         {{ router.meta.title }}
       </router-link>
+      <hr>
+      <layout-new-expanse />
     </div>
 
     <layout-logout />
@@ -20,11 +22,13 @@
 
 <script>
 import LayoutLogout from './LayoutLogout.vue'
+import LayoutNewExpanse from './LayoutNewExpanse.vue'
 
 export default {
   name: 'LayoutNavigation',
   components: {
-    LayoutLogout
+    LayoutLogout,
+    LayoutNewExpanse
   },
   computed: {
     routerLink () {

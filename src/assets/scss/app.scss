@@ -21,3 +21,12 @@
    background-color: $featured-dark;
  }
 }
+
+.btn-outline-primary {
+  border-color: var(--featured) !important;
+  color: $featured;
+  &:hover {
+   color: $dark;
+   background-color: $featured;
+ }
+}
