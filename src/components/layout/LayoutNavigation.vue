@@ -8,7 +8,7 @@
       exact
       exact-active-class="active"
     >
-      <i :class="`fa-${router.meta.icon}`" />
+      <i :class="`fa fa-${router.meta.icon}`" />
       {{ router.meta.title }}
     </router-link>
   </ul>

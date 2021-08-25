@@ -17,7 +17,7 @@ const router = new Router({
       path: '/about',
       name: 'about',
       meta: {
-        icon: 'about', title: 'About'
+        icon: 'podcast', title: 'About'
       },
       component: () => import(/* webpackChunkName: "about" */ './pages/about/About.vue')
     },
