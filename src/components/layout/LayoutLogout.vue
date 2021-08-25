@@ -1,5 +1,8 @@
 <template>
-  <button class="btn btn-logout">
+  <button
+    @click="logout()"
+    class="btn btn-logout"
+  >
     <i class="fa fa-power-off"></i>
     Logout
   </button>
@@ -8,7 +11,15 @@
 <script>
 
 export default {
-  name: 'LayoutLogout'
+  name: 'LayoutLogout',
+  methods: {
+    async logout () {
+      this.$root.$emit('Spinner::show')
+      await this.$firebase.auth().signOut()
+      this.$router.push({ name: 'login' })
+      this.$root.$emit('Spinner::hide')
+    }
+  }
 }
 </script>
 
