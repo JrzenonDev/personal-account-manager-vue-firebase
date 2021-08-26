@@ -68,7 +68,7 @@
                     {{ form.receipt.name }}
 
                     <button
-                      @click="form.receipt = null"
+                      @click="form.receipt = ''"
                       type="button"
                       class="btn btn-badge text-danger"
                     >
@@ -116,6 +116,18 @@ export default {
       description: ''
     }
   }),
+  computed: {
+    fileName () {
+      const { receipt } = this.form
+
+      if (receipt) {
+        const split = receipt.name.split('.')
+        return `${split[0]}-${new Date().getTime()}.${split[1]}`
+      } else {
+        return ''
+      }
+    }
+  },
   methods: {
     openFileDialog () {
       this.$refs.input.value = null
@@ -129,7 +141,6 @@ export default {
 
       const ref = this.$firebase.database().ref(window.uid)
       const id = ref.push().key
-
       const payload = {
         id,
         ...this.form,
