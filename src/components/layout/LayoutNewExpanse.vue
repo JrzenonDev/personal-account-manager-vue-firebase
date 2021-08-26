@@ -37,13 +37,30 @@
                   >
                 </div>
                 <div class="form-group col-4">
-                <label for="valor">Valor (R$):</label>
+                  <label for="valor">Valor (R$):</label>
                   <input
                     v-model="form.value"
                     type="text"
                     class="form-control"
                     required
                   >
+                </div>
+                <div class="form-group col-12 flex-column d-flex align-items-center">
+                  <input
+                    @change="handleFile($event)"
+                    ref="input"
+                    type="file"
+                    class="d-none"
+                    accept="image/*"
+                  >
+                  <br>
+                  <button
+                    @click="openFileDialog()"
+                    type="button"
+                    class="btn w-50 btn-outline-secondary"
+                  >
+                    Adicionar comprovante
+                  </button>
                 </div>
               </div>
             </div>
@@ -80,11 +97,19 @@ export default {
   data: () => ({
     showModal: false,
     form: {
+      receipt: '',
       value: '',
       description: ''
     }
   }),
   methods: {
+    openFileDialog () {
+      this.$refs.input.value = null
+      this.$refs.input.click()
+    },
+    handleFile ({ target }) {
+      this.form.receipt = target.files[0]
+    },
     submit () {
       this.$root.$emit('Spinner::show')
 
