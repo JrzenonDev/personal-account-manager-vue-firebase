@@ -61,6 +61,20 @@
                   >
                     Adicionar comprovante
                   </button>
+                  <div
+                    v-if="form.receipt"
+                    class="mt-2"
+                  >
+                    {{ form.receipt.name }}
+
+                    <button
+                      @click="form.receipt = null"
+                      type="button"
+                      class="btn btn-badge text-danger"
+                    >
+                      <i class="fa fa-trash text-danger"></i>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
