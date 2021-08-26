@@ -132,10 +132,8 @@ export default {
 
       const payload = {
         id,
-        receipt: '',
-        value: this.form.value,
-        createdAt: new Date().getTime(),
-        description: this.form.description
+        ...this.form,
+        createdAt: new Date().getTime()
       }
 
       ref.child(id).set(payload, err => {
