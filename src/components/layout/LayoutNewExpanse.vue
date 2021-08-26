@@ -136,26 +136,43 @@ export default {
     handleFile ({ target }) {
       this.form.receipt = target.files[0]
     },
-    submit () {
-      this.$root.$emit('Spinner::show')
+    async submit () {
+      let url = ''
 
-      const ref = this.$firebase.database().ref(window.uid)
-      const id = ref.push().key
-      const payload = {
-        id,
-        ...this.form,
-        createdAt: new Date().getTime()
-      }
+      try {
+        this.$root.$emit('Spinner::show')
 
-      ref.child(id).set(payload, err => {
-        this.$root.$emit('Spinner::hide')
+        const ref = this.$firebase.database().ref(window.uid)
+        const id = ref.push().key
 
-        if (err) {
-          console.error(err)
-        } else {
-          this.closeModal()
+        if (this.form.receipt) {
+          const snapshot = await this.$firebase.storage()
+            .ref(window.uid)
+            .child(this.fileName)
+            .put(this.form.receipt)
+
+          url = await snapshot.ref.getDownloadURL()
         }
-      })
+
+        const payload = {
+          id,
+          ...this.form,
+          receipt: url,
+          createdAt: new Date().getTime()
+        }
+
+        ref.child(id).set(payload, err => {
+          if (err) {
+            console.error(err)
+          } else {
+            this.closeModal()
+          }
+        })
+      } catch (err) {
+        console.error(err)
+      } finally {
+        this.$root.$emit('Spinner::hide')
+      }
     },
     closeModal () {
       this.showModal = false
