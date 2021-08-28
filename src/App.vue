@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <base-spinner />
+    <layout-notification />
     <div class="contaier-fluid" v-if="isLogged">
       <div class="row">
         <div class="col-lg-2 navigation-sidebar">
@@ -19,12 +20,14 @@
 <script>
 import BaseSpinner from './components/global/BaseSpinner'
 import LayoutNavigation from './components/layout/LayoutNavigation.vue'
+import LayoutNotification from './components/layout/LayoutNotification.vue'
 
 export default {
   name: 'App',
   components: {
     BaseSpinner,
-    LayoutNavigation
+    LayoutNavigation,
+    LayoutNotification
   },
   data () {
     return {
