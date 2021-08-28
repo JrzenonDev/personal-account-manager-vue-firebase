@@ -163,13 +163,23 @@ export default {
 
         ref.child(id).set(payload, err => {
           if (err) {
-            console.error(err)
+            this.$root.$emit('Notification::show', {
+              type: 'danger',
+              message: 'Não foi possível inserir o gasto, tente novamente.'
+            })
           } else {
+            this.$root.$emit('Notification::show', {
+              type: 'success',
+              message: 'Gasto inserido com sucesso.'
+            })
             this.closeModal()
           }
         })
       } catch (err) {
-        console.error(err)
+        this.$root.$emit('Notification::show', {
+          type: 'danger',
+          message: 'Não foi possível inserir o gasto, tente novamente.'
+        })
       } finally {
         this.$root.$emit('Spinner::hide')
       }
