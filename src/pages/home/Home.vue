@@ -45,7 +45,7 @@ export default {
       }
 
       if (exp.length) {
-        values.totalSpent = exp.map(e => e.value)
+        values.totalSpent = exp.map(e => +e.value)
       }
 
       return values
