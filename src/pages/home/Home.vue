@@ -20,7 +20,7 @@ export default {
 
       ref.on('value', data => {
         const values = data.val()
-        this.expanses = values
+        this.expanses = Object.keys(values).map(i => values[i])
 
         console.log(this.expanses)
       })
