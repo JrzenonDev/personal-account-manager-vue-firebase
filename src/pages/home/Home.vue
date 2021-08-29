@@ -49,6 +49,9 @@ export default {
           .reduce((accumulator, current) => accumulator + current, 0)
 
         values.average = values.totalSpent / exp.length
+
+        values.beggest = exp.sort((a, b) => +b.value - +a.value)[0]
+        values.lowest = exp.sort((a, b) => +a.value - +b.value)[0]
       }
 
       return values
