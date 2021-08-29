@@ -3,21 +3,33 @@
     <div class="row">
       <div class="col-6 home-box">
         <small>Você gastou</small>
-        <div class="money">R$ {{ totals.totalSpent }}</div>
+        <div
+          class="money"
+          v-money-format="totals.totalSpent"
+        />
         <small>Em 89 compras</small>
       </div>
       <div class="col-6 home-box">
         <small>A média de gasto é de</small>
-        <div class="money">R$ {{ totals.average }}</div>
+        <div
+          class="money"
+          v-money-format="totals.average"
+        />
       </div>
       <div class="col-6 home-box">
         <small>A maior compra foi de</small>
-        <div class="money">R$ 81.81</div>
+        <div
+          v-money-format="totals.beggest.value"
+          class="money"
+        />
         <small>No dia 10/08/2021</small>
       </div>
       <div class="col-6 home-box">
         <small>A menor compra foi de</small>
-        <div class="money">R$ 2.00</div>
+        <div
+          class="money"
+          v-money-format="totals.lowest.value"
+        />
         <small>No dia 20/08/2021</small>
       </div>
     </div>
