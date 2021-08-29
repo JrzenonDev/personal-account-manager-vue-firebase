@@ -19,10 +19,12 @@
       <div class="col-6 home-box">
         <small>A maior compra foi de</small>
         <div
-          v-money-format="totals.beggest.value"
+          v-money-format="totals.biggest.value"
           class="money"
         />
-        <small>No dia 10/08/2021</small>
+        <small
+          v-date-format="totals.biggest.createdAt"
+        />
       </div>
       <div class="col-6 home-box">
         <small>A menor compra foi de</small>
@@ -30,7 +32,9 @@
           class="money"
           v-money-format="totals.lowest.value"
         />
-        <small>No dia 20/08/2021</small>
+         <small
+          v-date-format="totals.lowest.createdAt"
+        />
       </div>
     </div>
   </div>
@@ -52,7 +56,7 @@ export default {
       const values = {
         totalSpent: 0,
         average: 0,
-        beggest: {},
+        biggest: {},
         lowest: {}
       }
 
@@ -62,7 +66,7 @@ export default {
 
         values.average = values.totalSpent / exp.length
 
-        values.beggest = exp.sort((a, b) => +b.value - +a.value)[0]
+        values.biggest = exp.sort((a, b) => +b.value - +a.value)[0]
         values.lowest = exp.sort((a, b) => +a.value - +b.value)[0]
       }
 
@@ -76,8 +80,6 @@ export default {
       ref.on('value', data => {
         const values = data.val()
         this.expanses = Object.keys(values).map(i => values[i])
-
-        console.log(this.expanses)
       })
     }
   }
