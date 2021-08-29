@@ -46,6 +46,7 @@ export default {
 
       if (exp.length) {
         values.totalSpent = exp.map(e => +e.value)
+          .reduce((accumulator, current) => accumulator + current, 0)
       }
 
       return values
