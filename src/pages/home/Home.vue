@@ -34,6 +34,23 @@ export default {
   created () {
     this.getData()
   },
+  computed: {
+    totals () {
+      const { expanses: exp } = this
+      const values = {
+        totalSpent: 0,
+        average: 0,
+        beggest: {},
+        lowest: {}
+      }
+
+      if (exp.length) {
+        values.totalSpent = exp.map(e => e.value)
+      }
+
+      return values
+    }
+  },
   methods: {
     getData () {
       const ref = this.$firebase.database().ref(`/${window.uid}`)
