@@ -3,12 +3,12 @@
     <div class="row">
       <div class="col-6 home-box">
         <small>Você gastou</small>
-        <div class="money">R$ 500.00</div>
+        <div class="money">R$ {{ totals.totalSpent }}</div>
         <small>Em 89 compras</small>
       </div>
       <div class="col-6 home-box">
         <small>A média de gasto é de</small>
-        <div class="money">R$ 81.81</div>
+        <div class="money">R$ {{ totals.average }}</div>
       </div>
       <div class="col-6 home-box">
         <small>A maior compra foi de</small>
@@ -47,6 +47,8 @@ export default {
       if (exp.length) {
         values.totalSpent = exp.map(e => +e.value)
           .reduce((accumulator, current) => accumulator + current, 0)
+
+        values.average = values.totalSpent / exp.length
       }
 
       return values
