@@ -20,6 +20,8 @@
 </template>
 
 <script>
+import moment from 'moment'
+import groupBy from 'lodash.groupby'
 
 export default {
   name: 'ListaGastos',
@@ -28,6 +30,32 @@ export default {
   }),
   created () {
     this.getData()
+  },
+  computed: {
+    groupedMounths () {
+      if (this.expanses.length) {
+        const months = groupBy(this.expanses, i => (
+          moment(i.createdAt).format('MM/YYYY')
+        ))
+
+        const sortedMonths = Object.keys(months).sort((a, b) => {
+          const pattern = 'MM/YYYY HH'
+          if (moment(`${a} 01`, pattern).isBefore(moment(`${b} 01`, pattern))) {
+            return -1
+          } else {
+            return +1
+          }
+        })
+
+        return sortedMonths.map(month => ({
+          month,
+          data: months[month],
+          total: months[month].map(i => +i.value).reduce((a, c) => a + c, 0)
+        }))
+      } else {
+        return []
+      }
+    }
   },
   methods: {
     getData () {
