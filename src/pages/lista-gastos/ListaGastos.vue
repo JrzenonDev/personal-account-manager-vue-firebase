@@ -22,7 +22,23 @@
 <script>
 
 export default {
-  name: 'ListaGastos'
+  name: 'ListaGastos',
+  data: () => ({
+    expanses: []
+  }),
+  created () {
+    this.getData()
+  },
+  methods: {
+    getData () {
+      const ref = this.$firebase.database().ref(`/${window.uid}`)
+
+      ref.on('value', data => {
+        const values = data.val()
+        this.expanses = Object.keys(values).map(i => values[i])
+      })
+    }
+  }
 }
 </script>
 
