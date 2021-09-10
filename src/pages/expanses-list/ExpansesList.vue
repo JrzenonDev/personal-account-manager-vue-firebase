@@ -24,7 +24,7 @@ import moment from 'moment'
 import groupBy from 'lodash.groupby'
 
 export default {
-  name: 'ListaGastos',
+  name: 'ExpansesList',
   data: () => ({
     expanses: []
   }),

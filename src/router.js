@@ -22,12 +22,12 @@ const router = new Router({
       component: () => import(/* webpackChunkName: "about" */ './pages/about/About.vue')
     },
     {
-      path: '/lista-gastos',
-      name: 'lista-gastos',
+      path: '/expanses-list',
+      name: 'expanses-list',
       meta: {
-        icon: 'list-ul', title: 'Lista gastos'
+        icon: 'list-ul', title: 'ExpansesList'
       },
-      component: () => import(/* webpackChunkName: "lista-gastos" */ './pages/lista-gastos/ListaGastos.vue')
+      component: () => import(/* webpackChunkName: "expanses-list" */ './pages/expanses-list/ExpansesList.vue')
     },
     {
       path: '/login',
