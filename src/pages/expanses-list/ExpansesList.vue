@@ -1,20 +1,25 @@
 <template>
-  <div class="month-navigation">
-    <div class="month-link">
-      <div class="month-label">01/2021</div>
-      <div class="value-label">R$ 92.21</div>
+  <div>
+    <div class="month-navigation">
+      <div class="month-link">
+        <div class="month-label">01/2021</div>
+        <div class="value-label">R$ 92.21</div>
+      </div>
+      <div class="month-link">
+        <div class="month-label">01/2021</div>
+        <div class="value-label">R$ 92.21</div>
+      </div>
+      <div class="month-link">
+        <div class="month-label">01/2021</div>
+        <div class="value-label">R$ 92.21</div>
+      </div>
+      <div class="month-link">
+        <div class="month-label">01/2021</div>
+        <div class="value-label">R$ 92.21</div>
+      </div>
     </div>
-    <div class="month-link">
-      <div class="month-label">01/2021</div>
-      <div class="value-label">R$ 92.21</div>
-    </div>
-    <div class="month-link">
-      <div class="month-label">01/2021</div>
-      <div class="value-label">R$ 92.21</div>
-    </div>
-    <div class="month-link">
-      <div class="month-label">01/2021</div>
-      <div class="value-label">R$ 92.21</div>
+    <div class="container">
+      <expanse-list-item />
     </div>
   </div>
 </template>
@@ -22,8 +27,10 @@
 <script>
 import moment from 'moment'
 import groupBy from 'lodash.groupby'
+import ExpanseListItem from './ExpanseListItem.vue'
 
 export default {
+  components: { ExpanseListItem },
   name: 'ExpansesList',
   data: () => ({
     expanses: []
